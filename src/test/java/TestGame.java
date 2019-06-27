@@ -24,6 +24,7 @@ public class TestGame extends TestCase {
     g.add(5);
     g.add(4);
     assertEquals(9, g.score());
+    assertEquals(1, g.getCurrentFrame());
   }
 
   public void testFourThrowsNoMark() {
