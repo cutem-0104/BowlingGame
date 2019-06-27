@@ -4,25 +4,28 @@ import junit.framework.*;
 
 public class TestGame extends TestCase {
 
+  private Game g;
+
   public TestGame(String name) {
     super(name);
   }
 
+  public void setUp() {
+    g = new Game();
+  }
+
   public void testOneThrow() {
-    Game g = new Game();
     g.add(5);
     assertEquals(5, g.score());
   }
 
   public void testTwoThrowsNoMark() {
-    Game g = new Game();
     g.add(5);
     g.add(4);
     assertEquals(9, g.score());
   }
 
   public void testFourThrowsNoMark() {
-    Game g = new Game();
     g.add(5);
     g.add(4);
     g.add(7);
@@ -30,5 +33,9 @@ public class TestGame extends TestCase {
     assertEquals(18, g.score());
     assertEquals(9, g.scoreForFrame(1));
     assertEquals(18, g.scoreForFrame(2));
+  }
+
+  public void testSimpleSpare() {
+
   }
 }
