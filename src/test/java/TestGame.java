@@ -17,6 +17,7 @@ public class TestGame extends TestCase {
   public void testOneThrow() {
     g.add(5);
     assertEquals(5, g.score());
+    assertEquals(1, g.getCurrentFrame());
   }
 
   public void testTwoThrowsNoMark() {
