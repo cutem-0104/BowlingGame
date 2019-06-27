@@ -30,7 +30,7 @@ public class Game {
   }
 
   public int getCurrentFrame() {
-    return 1;
+    return 1 + (itsCurrentThrow - 1) / 2;
   }
 
   private int itsScore = 0;
