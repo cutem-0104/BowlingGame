@@ -35,7 +35,6 @@ public class Game {
     int score = 0;
 
     for (int currentFrame = 0; currentFrame < theFrame; currentFrame++) {
-      firstThrow = itsThrows[ball];
       if (strike()) {
         ball++;
         score += 10 + nextTwoBalls();
@@ -56,9 +55,6 @@ public class Game {
 
   private int handleSecondThrow() {
     int score = 0;
-    secondThrow = itsThrows[ball + 1];
-
-    int frameScore = firstThrow + secondThrow;
     // スペアの得点計算には次のフレームの第１投が必要
     if (spare()) {
       ball += 2;
@@ -83,8 +79,6 @@ public class Game {
   }
 
   private int ball;
-  private int firstThrow;
-  private int secondThrow;
 
   private int itsScore = 0;
   private int[] itsThrows = new int[21];
