@@ -39,15 +39,22 @@ public class Game {
       if (firstThrow == 10) {
         score += 10 + itsThrows[ball] + itsThrows[ball + 1];
       } else {
-        secondThrow = itsThrows[ball++];
-        int frameScore = firstThrow + secondThrow;
-        // スペアの得点計算には次のフレームの第１投が必要
-        if (frameScore == 10) {
-          score += frameScore + itsThrows[ball];
-        } else {
-          score += frameScore;
-        }
+        score += handleSecondThrow();
       }
+    }
+    return score;
+  }
+
+  private int handleSecondThrow() {
+    int score = 0;
+    secondThrow = itsThrows[ball++];
+
+    int frameScore = firstThrow + secondThrow;
+    // スペアの得点計算には次のフレームの第１投が必要
+    if (frameScore == 10) {
+      score += frameScore + itsThrows[ball];
+    } else {
+      score += frameScore;
     }
     return score;
   }
