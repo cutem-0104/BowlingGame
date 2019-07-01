@@ -1,11 +1,11 @@
 // Scorer.java------------------------
-public class Scorer {
+class Scorer {
 
-  public void addThrow(int pins) {
+  void addThrow(int pins) {
     itsThrows[itsCurrentThrow++] = pins;
   }
 
-  public int scoreForFrame(int theFrame) {
+  int scoreForFrame(int theFrame) {
     ball = 0;
     int score = 0;
 

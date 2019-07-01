@@ -68,8 +68,8 @@ public class TestGame extends TestCase {
       g.add(0);
     }
     g.add(2);
-    g.add(8);
-    g.add(10);
+    g.add(8); // 10番目のフレームのスペア
+    g.add(10); // 配列の最後にストライク
     assertEquals(20, g.score());
   }
 
