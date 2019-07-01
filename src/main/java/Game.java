@@ -36,11 +36,11 @@ public class Game {
 
     for (int currentFrame = 0; currentFrame < theFrame; currentFrame++) {
       if (strike()) {
+        score += 10 + nextTwoBallsForStrike();
         ball++;
-        score += 10 + nextTwoBalls();
       } else if (spare()) {
+        score += 10 + nextBallForSpare();
         ball += 2;
-        score += 10 + nextBall();
       } else {
         score += twoBallsInFrame();
         ball += 2;
@@ -53,16 +53,16 @@ public class Game {
     return itsThrows[ball] == 10;
   }
 
-  private int nextTwoBalls() {
-    return itsThrows[ball] + itsThrows[ball + 1];
-  }
-
   private boolean spare() {
     return (itsThrows[ball] + itsThrows[ball + 1]) == 10;
   }
 
-  private int nextBall() {
-    return itsThrows[ball];
+  private int nextTwoBallsForStrike() {
+    return itsThrows[ball + 1] + itsThrows[ball + 2];
+  }
+
+  private int nextBallForSpare() {
+    return itsThrows[ball + 2];
   }
 
   private int twoBallsInFrame() {
