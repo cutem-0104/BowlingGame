@@ -65,6 +65,6 @@ public class TestGame extends TestCase {
       g.add(10);
     }
     assertEquals(300, g.score());
-    assertEquals(10, g.getCurrentFrame());
+    assertEquals(11, g.getCurrentFrame());
   }
 }
