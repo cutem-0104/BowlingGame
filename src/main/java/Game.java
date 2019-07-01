@@ -13,18 +13,21 @@ public class Game {
   public void add(int pins) {
     itsThrows[itsCurrentThrow++] = pins;
     itsScore += pins;
-    adjustCurrentFrame();
+    adjustCurrentFrame(pins);
   }
 
-  private void adjustCurrentFrame() {
+  private void adjustCurrentFrame(int pins) {
     if (firstThrow) {
-      firstThrow = false;
+      if (pins == 10) { // ストライク
+        itsCurrentFrame++;
+      } else {
+        firstThrow = false;
+      }
     } else {
       firstThrow = true;
       itsCurrentFrame++;
     }
   }
-
 
   public int scoreForFrame(int theFrame) {
     int ball = 0;
@@ -32,13 +35,17 @@ public class Game {
 
     for (int currentFrame = 0; currentFrame < theFrame; currentFrame++) {
       int firstThrow = itsThrows[ball++];
-      int secondThrow = itsThrows[ball++];
-      int frameScore = firstThrow + secondThrow;
-      // スペアの得点計算には次のフレームの第１投が必要
-      if (frameScore == 10) {
-        score += frameScore + itsThrows[ball];
+      if (firstThrow == 10) {
+        score += 10 + itsThrows[ball] + itsThrows[ball + 1];
       } else {
-        score += frameScore;
+        int secondThrow = itsThrows[ball++];
+        int frameScore = firstThrow + secondThrow;
+        // スペアの得点計算には次のフレームの第１投が必要
+        if (frameScore == 10) {
+          score += frameScore + itsThrows[ball];
+        } else {
+          score += frameScore;
+        }
       }
     }
     return score;
