@@ -11,7 +11,6 @@ public class Game {
 
   public void add(int pins) {
     itsScorer.addThrow(pins);
-    itsScore += pins;
     adjustCurrentFrame(pins);
   }
 
@@ -33,7 +32,6 @@ public class Game {
     return itsScorer.scoreForFrame(theFrame);
   }
 
-  private int itsScore = 0;
   private int itsCurrentFrame = 1;
   private boolean firstThrowInFrame = true;
   private Scorer itsScorer = new Scorer();
