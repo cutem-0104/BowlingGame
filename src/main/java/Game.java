@@ -46,15 +46,23 @@ public class Game {
     return score;
   }
 
+  private boolean strike() {
+    return itsThrows[ball] == 10;
+  }
+
+  private int nextTwoBalls() {
+    return itsThrows[ball] + itsThrows[ball + 1];
+  }
+
   private int handleSecondThrow() {
     int score = 0;
     secondThrow = itsThrows[ball + 1];
 
     int frameScore = firstThrow + secondThrow;
     // スペアの得点計算には次のフレームの第１投が必要
-    if (frameScore == 10) {
+    if (spare()) {
       ball += 2;
-      score += frameScore + itsThrows[ball];
+      score += 10 + nextBall();
     } else {
       ball += 2;
       score += frameScore;
@@ -62,12 +70,12 @@ public class Game {
     return score;
   }
 
-  private boolean strike() {
-    return itsThrows[ball] == 10;
+  private boolean spare() {
+    return (itsThrows[ball] + itsThrows[ball + 1]) == 10;
   }
 
-  private int nextTwoBalls() {
-    return itsThrows[ball] + itsThrows[ball + 1];
+  private int nextBall() {
+    return itsThrows[ball];
   }
 
   private int ball;
